@@ -7,7 +7,7 @@ int servoPin1 = 10;
 
 int dem=90;
 int dem1=90;
-int bugiat = 1;
+int bugiat = 10;
 
 void setup()
 {
@@ -56,20 +56,20 @@ void loop()
       if(sa2 > sb2)
       {
         Serial.println("aaaaaa");
-        dem1 = dem1-1;
-        if(dem1 <= 0)
+        dem1 = dem1+1;
+        if(dem1 >= 179)
         {
-          dem1 = 0;
+          dem1 = 179;
         }
       }
       if(sa2 < sb2)
       {
         Serial.println("bbbbbb");
         
-        dem1 = dem1 + 1;
-        if(dem1 >= 179)
+        dem1 = dem1 - 1;
+        if(dem1 <= 0)
         {
-          dem1 = 179;
+          dem1 = 0;
         }
       }
     }
@@ -83,20 +83,24 @@ void loop()
   Serial.println("");
   if(sa-sb > bugiat || sb-sa > bugiat)
   {
+    Serial.println("NANNNNNNNNNNNNNNN");
     if(sa > sb)
     {
-      dem = dem + 1;
-      if(dem >= 179)
-      {
-         dem = 179;  
-      }
-    }
-    if(sa < sb)
-    {
+      Serial.println("cccccccc");
       dem = dem - 1;
       if(dem <= 0)
       {
          dem = 0;
+      }
+      
+    }
+    if(sa < sb)
+    {
+      Serial.println("ddddddd");
+      dem = dem + 1;
+      if(dem >= 179)
+      {
+         dem = 179;  
       }
     }
   }
